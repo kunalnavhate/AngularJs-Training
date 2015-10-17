@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="app.js"></script>
+    <style>
+        .myclass{
+
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl as vm">
+        <form name="myForm" ng-controller="formController" novalidate>
+            <label ng-class="{'myclass' : !myForm.username.$valid }" for="">Username</label>
+            <input  type="text" ng-maxlength="10" ng-minlength="5" ng-model="username" name="username" required>
+            <span >Username is {{myForm.username.$valid}}</span><br>
+            <!-- <span class="error" ng-show="myForm.username.$error.required"> Username is required</span><br> -->
+            <label for="">Password</label> 
+            <input type="password" ng-model="password" name="password" required>
+            <!-- <span class="error" ng-show="myForm.password.$error.required"> Password is required</span> -->
+            <span ng-hide="myForm.$valid">my fornm is {{myForm.$valid}}</span>
+
+            <input ng-disabled="!myForm.$valid" type="submit">
+        </form>
+    </div>   	
+</body>
+</html>
